@@ -3,7 +3,7 @@ kind: Deployment # Kubernetes resource kind we are creating
 metadata:
   name: first-deployment
   annotations:
-    description: backend application v4.0
+    description: backend application v5.0
 spec:
   selector:
     matchLabels:
