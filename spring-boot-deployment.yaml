@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: first-deployment
-          image: 669797980703.dkr.ecr.us-east-1.amazonaws.com/jenkins-pipeline-build-staging:v3 # Image that will be used to con>
+          image: 669797980703.dkr.ecr.us-east-1.amazonaws.com/jenkins-pipeline-build-staging:v4 # Image that will be used to con>
           imagePullPolicy: Always
           ports:
             - containerPort: 8080 # The port that the container is running on in t>
