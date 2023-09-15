@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment # Kubernetes resource kind we are creating
+metadata:
+  name: first-deployment
+spec:
+  selector:
+    matchLabels:
+      app: first-ingress
+  replicas: 1 # Number of replicas that will be created for this deployment
+  template:
+    metadata:
+      labels:
+        app: first-ingress
+    spec:
+      containers:
+        - name: first-deployment
+          image: 669797980703.dkr.ecr.us-east-1.amazonaws.com/jenkins-pipeline-build-staging:v3 # Image that will be used to con>
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080 # The port that the container is running on in t>
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-k8s-svc
+spec:
+  selector:
+    app: first-ingress
+  ports:
+    - protocol: "TCP"
+      port: 80
+      targetPort: 8080
+  type: NodePort
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: helloworld
+  labels:
+    app: first-ingress
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: springboot-k8s-svc
+                port:
+                  number: 80
