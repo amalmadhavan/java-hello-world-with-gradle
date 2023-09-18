@@ -3,7 +3,7 @@ kind: Deployment # Kubernetes resource kind we are creating
 metadata:
   name: first-deployment
   annotations:
-    description: backend application v9.0
+    description: backend application v10.0
 spec:
   selector:
     matchLabels:
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: first-deployment
-          image: 669797980703.dkr.ecr.us-east-1.amazonaws.com/jenkins-pipeline-build-staging:v9
+          image: 669797980703.dkr.ecr.us-east-1.amazonaws.com/jenkins-pipeline-build-staging:v10
           tag:
           imagePullPolicy: Always
           ports:
