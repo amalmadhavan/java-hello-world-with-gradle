@@ -18,6 +18,6 @@ public class HelloControllerIT {
     @Test
     public void getHello() throws Exception {
         ResponseEntity<String> response = template.getForEntity("/", String.class);
-        assertThat(response.getBody()).isEqualTo("Greetings from Spring Boot v8.0!");
+        assertThat(response.getBody()).isEqualTo("Greetings from Spring Boot v9.0!");
     }
 }
